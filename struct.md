@@ -44,7 +44,7 @@ Let us take deeper look about what this concept is really about.
 	C programming language, and our interface is usually a bunch of header 
 	files that the python interpreter needs to work.
 	In a typical LINUX  machine, you should find your interface files in this directory: 
-	`usr/include/pythonX.Y [Wher X.Y is the version number of the python in use, e.g 3.10].
+	`usr/include/pythonX.Y` [Wher X.Y is the version number of the python in use, e.g 3.10].
 Every Python Object can be represented as a **pointer to a PyObject** 
 under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
 This PyObject is a user defined datatype in reference to C. 
@@ -52,7 +52,8 @@ The struct definition of PyObject is given below (as seen in the `object.h` file
 		
 
 
-```C typedef struct _object 
+```C 
+typedef struct _object 
 	{
 		_PyObject_HEAD_EXTRA; 
 		Py_ssize_t ob_refcnt;
@@ -88,7 +89,8 @@ In our case and consideration, we are looking at the Python Object list,
 which is the `PyListObject`, which is defined with the following fields below:
 
 
-```C typedef struct {
+```C 
+typedef struct {
 	PyObject_VAR_HEAD;
 	PyObject **ob_item;
 	Py_ssize_t allocated;
