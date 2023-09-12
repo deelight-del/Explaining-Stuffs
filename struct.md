@@ -50,7 +50,7 @@ Let us take deeper look about what this concept is really about.
 
 
 Every Python Object can be represented as a **pointer to a PyObject** 
-under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
+under the hood (i.e in the C programming language, which is used to compile the Python interpreter). 
 This PyObject is a user defined datatype in reference to C. 
 The struct definition of PyObject is given below (as seen in the `object.h` file):
 		
