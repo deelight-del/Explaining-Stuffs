@@ -11,44 +11,44 @@ Our C function is of the prototype,
 	```
 
 ## Let us talk about Python and PyObject.
-	By now, you might have heard the phrase "Everything is an object in Python".
-	Let us take deeper look about what this concept is really about. 
-	> **FOR BEGINNERS: A little recap about the Python language and its interpreter:**
-	>The Python interpreter is a program that **interpretes** a 
+> By now, you might have heard the phrase "Everything is an object in Python".
+Let us take deeper look about what this concept is really about. 
+	**FOR BEGINNERS: A little recap about the Python language and its interpreter:**
+	The Python interpreter is a program that **interpretes** a 
 	Python code (written in Python language).
-	>A Python interpreter's behaviour can easily be compared 
+	A Python interpreter's behaviour can easily be compared 
 	with how a shell behaves.
-	>When you enter some certain `command` on a simple shell, such `command` 
+	When you enter some certain `command` on a simple shell, such `command` 
 	is executed using the machine's
-	>operating system (OS) kernel (on an oversimplified level, this could be said
-			as executing the command on the
-	>computer's processor directly). 
-	>The `command` is usually a pathname to a binary executable on your machine. 
-	>The result of such execution is thus displayed to your output.
-	>In the same vein, with the python interpreter, 
+	operating system (OS) kernel (on an oversimplified level, this could be said
+	as executing the command on the
+	computer's processor directly). 
+	The `command` is usually a pathname to a binary executable on your machine. 
+	The result of such execution is thus displayed to your output.
+	In the same vein, with the python interpreter, 
 	when you enter a command (a script, some function,
-	>method, or instantiation of classes), the given command is taken to a "backroom". 
-	>This backroom is equivalent to how the simple shell takes a given command to the
-	>backroom and execute the respective executable with the OS kernel.
-	>In the Python's backroom actually, most (if not all) of its 
+	method, or instantiation of classes), the given command is taken to a "backroom". 
+	This backroom is equivalent to how the simple shell takes a given command to the
+	backroom and execute the respective executable with the OS kernel.
+	In the Python's backroom actually, most (if not all) of its 
 	executable commands are not ready made executables.
-	>Instead, a typical Python's backroom consist of a lot of interfaces 
+	Instead, a typical Python's backroom consist of a lot of interfaces 
 	that allows the execution of your command 
-	>on the python interpreter. The interface typically includes files from 
+	on the python interpreter. The interface typically includes files from 
 	the lower level language that the 
-	>python interpreter is written in.
-	>IN OUR CASE HERE, We are dealing with CPython, 
+	python interpreter is written in.
+	IN OUR CASE HERE, We are dealing with CPython, 
 	which tells us that our interpreter is
-	>a binary executable that was executed in the 
+	a binary executable that was executed in the 
 	C programming language, and our interface is usually a bunch of header 
-	>files that the python interpreter needs to work.
-	>In a typical LINUX  machine, you should find your interface files in this directory: 
-	>`usr/include/pythonX.Y [Wher X.Y is the version number of the python in use, e.g 3.10].
+	files that the python interpreter needs to work.
+	In a typical LINUX  machine, you should find your interface files in this directory: 
+	`usr/include/pythonX.Y [Wher X.Y is the version number of the python in use, e.g 3.10].
 
-	>Every Python Object can be represented as a **pointer to a PyObject** 
-	>under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
-	>This PyObject is a user defined datatype in reference to C. 
-	>The struct definition of PyObject is given below (as seen in the `object.h` file):
+	Every Python Object can be represented as a **pointer to a PyObject** 
+	under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
+	This PyObject is a user defined datatype in reference to C. 
+	The struct definition of PyObject is given below (as seen in the `object.h` file):
 		
 
 
