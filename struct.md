@@ -11,25 +11,36 @@ Our C function is of the prototype,
 	```
 
 ## Let us talk about Python and PyObject.
-	By now, you might have heard the phrase "Everything is an object in Python". Let us take deeper look about what this concept is really about. 
+	By now, you might have heard the phrase "Everything is an object in Python".
+	Let us take deeper look about what this concept is really about. 
 	> **FOR BEGINNERS: A little recap about the Python language and its interpreter:**
-	>The Python interpreter is a program that **interpretes** a Python code (written in Python language).
-	>A Python interpreter's behaviour can easily be compared with how a shell behaves.
-	>When you enter some certain `command` on a simple shell, such `command` is executed using the machine's
-	>operating system (OS) kernel (on an oversimplified level, this could be said as executing the command on the
+	>The Python interpreter is a program that **interpretes** a 
+	Python code (written in Python language).
+	>A Python interpreter's behaviour can easily be compared 
+	with how a shell behaves.
+	>When you enter some certain `command` on a simple shell, such `command` 
+	is executed using the machine's
+	>operating system (OS) kernel (on an oversimplified level, this could be said
+			as executing the command on the
 	>computer's processor directly). 
 	>The `command` is usually a pathname to a binary executable on your machine. 
 	>The result of such execution is thus displayed to your output.
-	>In the same vein, with the python interpreter, when you enter a command (a script, some function,
+	>In the same vein, with the python interpreter, 
+	when you enter a command (a script, some function,
 	>method, or instantiation of classes), the given command is taken to a "backroom". 
 	>This backroom is equivalent to how the simple shell takes a given command to the
 	>backroom and execute the respective executable with the OS kernel.
-	>In the Python's backroom actually, most (if not all) of its executable commands are not ready made executables.
-	>Instead, a typical Python's backroom consist of a lot of interfaces that allows the execution of your command 
-	>on the python interpreter. The interface typically includes files from the lower level language that the 
+	>In the Python's backroom actually, most (if not all) of its 
+	executable commands are not ready made executables.
+	>Instead, a typical Python's backroom consist of a lot of interfaces 
+	that allows the execution of your command 
+	>on the python interpreter. The interface typically includes files from 
+	the lower level language that the 
 	>python interpreter is written in.
-	>IN OUR CASE HERE, We are dealing with CPython, which tells us that our interpreter is
-	>a binary executable that was executed in the C programming language, and our interface is usually a bunch of header 
+	>IN OUR CASE HERE, We are dealing with CPython, 
+	which tells us that our interpreter is
+	>a binary executable that was executed in the 
+	C programming language, and our interface is usually a bunch of header 
 	>files that the python interpreter needs to work.
 	>In a typical LINUX  machine, you should find your interface files in this directory: 
 	>`usr/include/pythonX.Y [Wher X.Y is the version number of the python in use, e.g 3.10].
@@ -40,9 +51,18 @@ Our C function is of the prototype,
 	>The struct definition of PyObject is given below (as seen in the `object.h` file):
 		
 
-		```C typedef struct _object {_PyObject_HEAD_EXTRA; Py_ssize_t ob_refcnt;PyTypeObject *ob_type;} PyObject;
+
+```C typedef struct _object 
+	{
+		_PyObject_HEAD_EXTRA; 
+		Py_ssize_t ob_refcnt;
+		PyTypeObject *ob_type;
+	} PyObject;
 ```
-- **The first element:** `_Py_ObjectHEAD_EXTRA` is a macros that an object type uses for inheritances. (Open to contribution and discussion)
+
+
+- **The first element:** `_Py_ObjectHEAD_EXTRA` is a macros that an 
+object type uses for inheritances. (Open to contribution and discussion)
 
 - **The second element:** `ob_refcnt` is of datatype `Py_ssize_t` (an alias of `ssize_t`).
 `ob_refcnt` is the reference count which is used in memory management (Garbage Collection).
@@ -51,23 +71,27 @@ Our C function is of the prototype,
 It is a pointer to another `struct` datatype called `PyTypeObject` that also contain some fields 
 as found in the [link](https://docs.python.org/3/c-api/typeobj.html).
 
-There is also a variation of the PyObject datatype called `PyVarObject`, that has an extra field called the `size` field. 
-In a simple nutshell, every object datatype is constructed with `PyObject struct` as a base. 
-Every Object datatype constructed from PyObject can (be converted to) behave as a PyObject.
-Note, that the PyObject struct is never actually used directly to construct a Python Object. Instead, a PyObject pointer is used.
+There is also a variation of the PyObject datatype called `PyVarObject`, 
+that has an extra field called the `size` field. 
+In a simple nutshell, every object datatype is constructed 
+with `PyObject struct` as a base. 
+Every Object datatype constructed from PyObject 
+can (be converted to) behave as a PyObject.
+Note, that the PyObject struct is never actually used directly 
+to construct a Python Object. Instead, a PyObject pointer is used.
 
-PyObject or/and PyVarObject are thus used as the most basic constructors to construct
+PyObject or/and PyVarObject are thus used as the most basic 
+constructors to construct
 Python Objects including integers, floats, lists, tuples, e.t.c.
 
 In our case and consideration, we are looking at the Python Object list, 
-   which is the `PyListObject`, which is defined with the following fields below:
+which is the `PyListObject`, which is defined with the following fields below:
 
 
-```C
-typedef struct {
-	    PyObject_VAR_HEAD
-		        PyObject **ob_item;
-	        Py_ssize_t allocated;
+```C typedef struct {
+	PyObject_VAR_HEAD;
+	PyObject **ob_item;
+	Py_ssize_t allocated;
 } PyListObject;
 ```
 
