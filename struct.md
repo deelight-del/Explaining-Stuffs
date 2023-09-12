@@ -11,9 +11,10 @@ Our C function is of the prototype,
 	```
 
 ## Let us talk about Python and PyObject.
-> By now, you might have heard the phrase "Everything is an object in Python".
+By now, you might have heard the phrase "Everything is an object in Python".
 Let us take deeper look about what this concept is really about. 
-	**FOR BEGINNERS: A little recap about the Python language and its interpreter:**
+
+> **FOR BEGINNERS: A little recap about the Python language and its interpreter:**
 	The Python interpreter is a program that **interpretes** a 
 	Python code (written in Python language).
 	A Python interpreter's behaviour can easily be compared 
@@ -44,11 +45,10 @@ Let us take deeper look about what this concept is really about.
 	files that the python interpreter needs to work.
 	In a typical LINUX  machine, you should find your interface files in this directory: 
 	`usr/include/pythonX.Y [Wher X.Y is the version number of the python in use, e.g 3.10].
-
-	Every Python Object can be represented as a **pointer to a PyObject** 
-	under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
-	This PyObject is a user defined datatype in reference to C. 
-	The struct definition of PyObject is given below (as seen in the `object.h` file):
+Every Python Object can be represented as a **pointer to a PyObject** 
+under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
+This PyObject is a user defined datatype in reference to C. 
+The struct definition of PyObject is given below (as seen in the `object.h` file):
 		
 
 
