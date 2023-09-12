@@ -6,7 +6,7 @@ The task given is to be able to print some information about a given list dataty
 > P:S - You don't need to know a lot about dynamic linking to be able to complete this task. And going forward, I will be focusing on what you need to know.
 
 Our C function is of the prototype, 
-    ``` C
+    ```C
     void (PyObject *)
 	```
 
