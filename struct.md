@@ -46,6 +46,9 @@ Let us take deeper look about what this concept is really about.
 	files that the python interpreter needs to work.
 	In a typical LINUX  machine, you should find your interface files in this directory: 
 	`usr/include/pythonX.Y` [Wher X.Y is the version number of the python in use, e.g 3.10].
+
+
+
 Every Python Object can be represented as a **pointer to a PyObject** 
 under the hood (i.e in the C programming language, which is used to compile the C interpreter). 
 This PyObject is a user defined datatype in reference to C. 
